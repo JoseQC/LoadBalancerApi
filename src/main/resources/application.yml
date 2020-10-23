@@ -1,0 +1,30 @@
+#zuul:
+#  routes:
+#    users:
+#      path: /users/**
+#      service-id: USER-SERVICES
+#      strip-prefix: false
+
+spring:
+  cloud:
+    config:
+      server:
+        git: 
+          uri: https://github.com/JoseQC/DataConfig
+          searchPaths: ConfigData
+        native:
+          searchLocations: classpath:offline-repository/
+
+# Discovery Server Access
+eureka:
+  client:
+    registerWithEureka: false
+    service-url:
+      defaultZone: http://localhost:9000/eureka/
+
+server:
+  port: 8080   # HTTP (Tomcat) port
+  
+  
+  
+  
